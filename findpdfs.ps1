@@ -1,6 +1,6 @@
 $array = @()
 
-$files = Get-ChildItem -Filter "*.pdf" -Path %systemroot -Recurse | select Name, Fullname, Lastaccesstime
+$files = Get-ChildItem -Filter "*.pdf" -Path C: -Recurse | select Name, Fullname, Lastaccesstime
 
 foreach ($file in $files) {
     $acl = get-acl $file.fullname | Select -ExpandProperty Owner
