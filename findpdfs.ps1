@@ -1,9 +1,9 @@
 $array = @()
 
-$files = Get-ChildItem -Filter "*.pdf" -Path C: -Recurse | select Name, Fullname, Lastaccesstime
+$files = Get-ChildItem -Filter "*.pdf" -Path C: -Recurse | Select-Object Name, Fullname, Lastaccesstime
 
 foreach ($file in $files) {
-    $acl = get-acl $file.fullname | Select -ExpandProperty Owner
+    $acl = get-acl $file.fullname | Select-Object -ExpandProperty Owner
     
     $output = [PScustomobject]@{
         acl = $acl
